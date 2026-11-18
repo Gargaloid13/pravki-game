@@ -84,7 +84,7 @@ function desk(){
 }
 function draw(){ctx.imageSmoothingEnabled=false;background();for(const o of obstacles)stack(o);for(const b of bonuses)bonus(b);if(ready){ctx.save();if(state==='crash'){ctx.translate(PLAYER_X,GROUND);ctx.rotate(-Math.min(crashTime,.25)*1.4);ctx.translate(-PLAYER_X,-GROUND);}runner();ctx.restore();}if(state==='over'||(state==='crash'&&crashTime>=REVEAL_AT))desk();for(const q of papers){ctx.save();ctx.translate(Math.round(q.x),Math.round(q.y));ctx.rotate(q.a);rect(-q.w/2,-4,q.w,9,'#f9f3df');rect(-q.w/2+2,-1,q.w-4,1,'#a3b0a5');ctx.restore();}for(const q of popups)PixelText(ctx,'+'+q.points,q.x,q.y,2,'#466f49',true);
 smoke();
-ctx.font='bold 16px monospace';ctx.fillStyle='#344436';ctx.textBaseline='top';ctx.textAlign='left';ctx.fillText(String(Math.floor(travel/36)).padStart(5,'0')+' м',22,18);ctx.textAlign='right';ctx.fillText(score+' USD',978,18);ctx.textAlign='left';
+ctx.font='bold '+(canvas.clientWidth<640?30:16)+'px monospace';ctx.fillStyle='#344436';ctx.textBaseline='top';ctx.textAlign='left';ctx.fillText(String(Math.floor(travel/36)).padStart(5,'0')+' м',22,18);ctx.textAlign='right';ctx.fillText(score+' USD',978,18);ctx.textAlign='left';
 const status=!ready?'Загрузка':state==='over'?'Погряз в правках':state==='crash'?'Столкновение':'Бег';if($('#status').textContent!==status)$('#status').textContent=status;
 if(!ready){ctx.textAlign='center';ctx.fillText('Загрузка…',500,240);ctx.textAlign='left';}}
 function puff(x,y,r,color){
